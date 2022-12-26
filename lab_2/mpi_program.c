@@ -206,10 +206,7 @@ int main(int argc, char *argv[])
         writemap(of, second_plate, height,width);
         of.close();
     }
-        auto end = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(end - start);
-        cout <<  chrono::duration <double, milli> (duration).count() << endl;
-		printf("%d iterations.\n", iterations);
+
 	}
 
 	else
@@ -222,7 +219,10 @@ int main(int argc, char *argv[])
 
 	free_plate(first_plate, height, width);
 	free_plate(second_plate, height, width);
-
+    auto end = high_resolution_clock::now();
+    auto duration = (end - start);
+    cout <<  chrono::duration <double, milli> (duration).count() << endl;
+    printf("%d iterations.\n", iterations);
 	MPI_Finalize();
 
 	return 0;
